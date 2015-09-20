@@ -12,7 +12,10 @@ Installation:
  1. Install Node.JS
  2. Create GameOn folder in your c:\
  3. Go to GameOn folder
- 2. Install Cordova - npm install -g cordova
+ 2. Install Cordova - 
+  ```bash
+  npm install -g cordova
+  ```
  3. Install Ionic - npm install -g ionic
  4. Start the project - ionic start gameon blank
  5. For now till we will have a mac -  ionic platform add android
