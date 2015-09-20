@@ -22,3 +22,9 @@ Installation:
  9. To open the web version of your project : ionic serve 
  10. choose 3
 
+
+Note: 
+-----
+If you want to test the app in your computer you will need to install java se first.
+Then donwload the Android SDK http://dl.google.com/android/installer_r24.3.4-windows.exe
+
