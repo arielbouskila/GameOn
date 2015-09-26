@@ -1,0 +1,32 @@
+<ion-view view-title="Players">
+  <ion-content has-header="true" has-subheader="true">
+    <ion-list>
+      <ion-item ng-repeat="player in players" type="item-text-wrap">
+        <ion-checkbox ng-checked="player.selected" ng-show="!player.isPlayerEdited">
+          {{player.name}} <input type="text" ng-model="player.rank"/>
+        </ion-checkbox>
+        <div class="item item-input-inset" ng-show="player.isPlayerEdited">
+          <label class="item-input-wrapper">
+            <input type="text" ng-model="player.name" focus-me="player.isPlayerEdited"/>
+          </label>
+          <button class="button button-small" ng-click="editPlayerSave(player)">
+            Done
+          </button>
+        </div>
+        <ion-option-button class="button-balanced icon ion-edit" ng-click="editPlayer(player)"></ion-option-button>
+        <ion-option-button class="button-assertive icon ion-trash-a" ng-click="deletePlayer(player)"></ion-option-button>
+      </ion-item>
+      <div class="item item-input-inset" ng-show="isNewPlayerActive">
+        <label class="item-input-wrapper">
+          <input type="text" ng-model="model.newPlayer" focus-me="isNewPlayerActive"/>
+        </label>
+        <button class="button button-small" ng-click="addPlayer()">
+          Add
+        </button>
+      </div>
+      <button class="button button-positive" ng-click="addPlayerClicked()" ng-show="!isNewPlayerActive">
+        + Add
+      </button>
+    </ion-list>
+  </ion-content>
+</ion-view>
