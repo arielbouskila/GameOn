@@ -7,7 +7,8 @@ app.config(function ($stateProvider, $urlRouterProvider) {
     })
     .state('team', {
       url: '/team',
-      templateUrl: 'templates/team.html'
+      templateUrl: 'templates/team.html',
+      controller: 'teamController'
     }
   );
   $urlRouterProvider.otherwise('/');

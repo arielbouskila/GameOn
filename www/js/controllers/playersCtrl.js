@@ -1,5 +1,5 @@
-app.controller("playersController", ['$scope', '$localstorage', '$ionicListDelegate', function ($scope, $localstorage, $ionicListDelegate) {
-  $scope.players = [];
+app.controller("playersController", ['$scope', '$localstorage', '$ionicListDelegate','$location','sharedPropertiesService', function ($scope, $localstorage, $ionicListDelegate,$location,sharedPropertiesService) {
+  $scope.players = $localstorage.getObject("players") ? $localstorage.getObject("players") :  [];
   $scope.isNewPlayerActive = false;
   $scope.addPlayerClicked = function () {
     $scope.model.newPlayer = "";
@@ -11,7 +11,8 @@ app.controller("playersController", ['$scope', '$localstorage', '$ionicListDeleg
     $scope.players.push({
       id: id,
       name: $scope.model.newPlayer,
-      selected: false
+      selected: false,
+      rank:""
     });
     $scope.model.newPlayer = "";
     $scope.isNewPlayerActive = false;
@@ -27,7 +28,23 @@ app.controller("playersController", ['$scope', '$localstorage', '$ionicListDeleg
     var index = $scope.players.indexOf(player);
     $scope.players.splice(index, 1);
   };
-  //$localstorage.setObject("players",players);
+  $scope.save = function(){
+    $localstorage.setObject("players",$scope.players);
+  };
+  $scope.select = function(){
+    var tempSelected = [];
+    for(var i=0;i<$scope.players.length;i++){
+      if($scope.players[i].selected){
+        tempSelected.push($scope.players[i]);
+      }
+    }
+    sharedPropertiesService.setProperty(tempSelected);
+    console.log(sharedPropertiesService.getProperty());
+    $location.path('/team');
+
+
+  }
+
   $scope.players = ($localstorage.getObject("players") && $localstorage.getObject("players").length) ? $localstorage.getObject("players") : [];
 
 }]);
