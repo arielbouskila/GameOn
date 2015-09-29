@@ -1,14 +1,15 @@
 <ion-view view-title="Team">
   <ion-content has-header="true" has-subheader="true">
     <ion-list>
-      <ion-item ng-repeat="player in selectedPlayers" type="item-text-wrap">
+      <ion-item ng-repeat="player in config.playersList" type="item-text-wrap">
         <h3>{{player.name}}</h3>
         <div class="rank">
-          <input type="number" min="0" max="10" ng-value="player.rank" placeholder="Rank"/>
+          <input type="number" min="0" max="10" ng-model="player.rank" placeholder="Rank" required />
         </div>
       </ion-item>
     </ion-list>
 
+    <button class="button button-royal" ng-click="shuffle()">Shuffle</button>
   </ion-content>
 
 </ion-view>

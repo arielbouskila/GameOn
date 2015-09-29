@@ -2,3 +2,10 @@
 .buttons{
   float:right;
 }
+
+.actions button {
+  margin-left: 20px;
+}
+.list.team{
+  margin-top: 44px;
+}

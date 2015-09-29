@@ -9,7 +9,11 @@ app.config(function ($stateProvider, $urlRouterProvider) {
       url: '/team',
       templateUrl: 'templates/team.html',
       controller: 'teamController'
-    }
-  );
+    })
+    .state('results',{
+        url:'/results',
+        templateUrl: 'templates/results.html',
+        controller: 'resultController'
+      })
   $urlRouterProvider.otherwise('/');
 });

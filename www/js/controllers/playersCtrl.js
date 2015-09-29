@@ -32,18 +32,19 @@ app.controller("playersController", ['$scope', '$localstorage', '$ionicListDeleg
     $localstorage.setObject("players",$scope.players);
   };
   $scope.select = function(){
+    var config = {};
     var tempSelected = [];
     for(var i=0;i<$scope.players.length;i++){
       if($scope.players[i].selected){
         tempSelected.push($scope.players[i]);
       }
     }
-    sharedPropertiesService.setProperty(tempSelected);
+    config.playersList = tempSelected;
+    config.numberOfPlayersInTeam = $scope.model.numberOfPlayersInTeam;
+    sharedPropertiesService.setProperty(config);
     console.log(sharedPropertiesService.getProperty());
     $location.path('/team');
-
-
-  }
+  };
 
   $scope.players = ($localstorage.getObject("players") && $localstorage.getObject("players").length) ? $localstorage.getObject("players") : [];
 
