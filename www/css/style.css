@@ -7,8 +7,55 @@
   margin-left: 20px;
 }
 
+.item-input {
+  width: 100%;
+  height: 34px;
+  margin: 0;
+}
+
+.subHeader {
+  top: 45px;
+}
+
+.has-header {
+  top: 90px;
+}
+
 .general .button-balanced {
   float: right;
+}
+
+.checkbox {
+  width: 100%;
+  display: inline-block;
+  line-height: 25px;
+}
+.checkbox input {
+  float: left;
+  margin-right: 15px;
+}
+
+.button {
+  z-index: 1;
+  padding: 0 8px;
+  min-width: initial;
+  min-height: 31px;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 32px;
+}
+
+.editItem {
+  width: 100%;
+  display: flex;
+}
+
+.item-content {
+  padding: 16px !important;
+}
+
+.button::before {
+  line-height: 32px !important;
 }
 
 .list.team{

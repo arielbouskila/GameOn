@@ -1,7 +1,12 @@
 <ion-view view-title="Team">
-  <ion-header-bar class="bar-light bar-subheader">
-    <button class="button button-royal" ng-click="shuffle()">Shuffle</button>
-  </ion-header-bar>
+  <div class="bar bar-header subHeader">
+    <div class="item item-input-inset">
+      <label class="item item-input">
+        <input type="number" ng-model="model.numberOfPlayersInTeam" placeholder="Number of people in a team" class="numberofpeople" required/>
+      </label>
+    </div>
+    <button class="icon ion-trophy" ng-click="shuffle()"></button>
+  </div>
   <ion-content has-header="true" has-subheader="true">
     <ion-list>
       <ion-item ng-repeat="player in config.playersList" type="item-text-wrap">
@@ -12,5 +17,4 @@
       </ion-item>
     </ion-list>
   </ion-content>
-
 </ion-view>

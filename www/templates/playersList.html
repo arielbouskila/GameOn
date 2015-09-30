@@ -1,47 +1,34 @@
 <ion-view view-title="Players">
-  <ion-header-bar class="bar-light bar-subheader">
-    <div class="general">
-      <button class="button button-positive" ng-click="addPlayerClicked()" ng-show="!isNewPlayerActive"><i class="icon ion-plus-round"></i></button>
-      <button class="button button-royal" ng-click="save()">SAVE</button>
-      <button class="button button-balanced" ng-click="select()" ng-show="players.length">SELECT</button>
-      <label class="item item-input">
-        <i class="icon ion-search placeholder-icon"></i>
-        <input type="text" placeholder="Search" ng-model="search">
-      </label>
-      <div class="item item-input-inset">
-        <label class="item-input-wrapper">
-          <input type="number" ng-model="model.numberOfPlayersInTeam" placeholder="Number of people in a team" class="numberofpeople" required/>
-        </label>
-      </div>
-    </div>
-  </ion-header-bar>
+  <div class="bar bar-header subHeader">
+    <button class="button icon ion-plus-round" ng-click="addPlayerClicked()" ng-disabled="isNewPlayerActive || isEditPlayerActive"></button>
+    <label class="item item-input">
+      <i class="icon ion-search placeholder-icon"></i>
+      <input type="text" placeholder="Search" ng-model="search">
+    </label>
+    <button class="button icon ion-ios-people" ng-click="nextToRankPage()" ng-disabled="!selectedPlayers.length"></button>
+  </div>
   <ion-content has-header="true" has-subheader="true">
     <ion-list>
       <ion-item ng-repeat="player in players | orderBy : 'name' | filter:{name :search} " type="item-text-wrap">
-        <ion-checkbox ng-checked="player.selected" ng-model="player.selected" ng-show="!player.isPlayerEdited">
-          {{player.name}} <input type="text" ng-model="player.rank"/>
-        </ion-checkbox>
-        <div class="item item-input-inset" ng-show="player.isPlayerEdited">
-          <label class="item-input-wrapper">
+        <label class="checkbox" ng-show="!player.isPlayerEdited">
+          <input type="checkbox" ng-change="selectPlayer()" ng-checked="player.selected" ng-model="player.selected">
+          {{player.name}}
+        </label>
+        <div class="editItem" ng-show="player.isPlayerEdited">
+          <label class="item item-input">
             <input type="text" ng-model="player.name" focus-me="player.isPlayerEdited"/>
           </label>
-          <button class="button button-small" ng-click="editPlayerSave(player)">
-            Done
-          </button>
+          <button class="button icon ion-checkmark-round" ng-click="editPlayerSave(player)"></button>
         </div>
-        <ion-option-button class="button-balanced icon ion-edit" ng-click="editPlayer(player)"></ion-option-button>
+        <ion-option-button class="button-balanced icon ion-edit" ng-click="editPlayerModeOn(player)" ng-disabled="isNewPlayerActive"></ion-option-button>
         <ion-option-button class="button-assertive icon ion-trash-a" ng-click="deletePlayer(player)"></ion-option-button>
       </ion-item>
       <div class="item item-input-inset" ng-show="isNewPlayerActive">
-        <label class="item-input-wrapper">
+        <label class="item item-input">
           <input type="text" ng-model="model.newPlayer" focus-me="isNewPlayerActive"/>
         </label>
-        <button class="button button-small" ng-click="addPlayer()">
-          Add
-        </button>
+        <button class="button icon ion-checkmark-round" ng-click="addPlayer()"></button>
       </div>
-
-
     </ion-list>
   </ion-content>
 </ion-view>
