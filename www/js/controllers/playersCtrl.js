@@ -67,6 +67,7 @@ app.controller("playersController", ['$scope', '$localstorage', '$ionicListDeleg
     $localstorage.setObject("players", $scope.players);
   }
 
+  $scope.selectPlayer();
   $scope.players = ($localstorage.getObject("players") && $localstorage.getObject("players").length) ? $localstorage.getObject("players") : [];
 
 }]);

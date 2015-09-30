@@ -9,7 +9,7 @@
   </div>
   <ion-content has-header="true" has-subheader="true">
     <ion-list>
-      <ion-item ng-repeat="player in players | orderBy : 'name' | filter:{name :search} " type="item-text-wrap">
+      <ion-item ng-repeat="player in players | orderBy : 'name' | filter:{name :search}" type="item-text-wrap">
         <label class="checkbox" ng-show="!player.isPlayerEdited">
           <input type="checkbox" ng-change="selectPlayer()" ng-checked="player.selected" ng-model="player.selected">
           {{player.name}}
