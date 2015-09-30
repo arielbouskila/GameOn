@@ -10,10 +10,10 @@ app.config(function ($stateProvider, $urlRouterProvider) {
       templateUrl: 'templates/team.html',
       controller: 'teamController'
     })
-    .state('results',{
-        url:'/results',
-        templateUrl: 'templates/results.html',
-        controller: 'resultController'
-      })
+    .state('results', {
+      url: '/results',
+      templateUrl: 'templates/results.html',
+      controller: 'resultController'
+    });
   $urlRouterProvider.otherwise('/');
 });

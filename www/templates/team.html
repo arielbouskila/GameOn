@@ -9,7 +9,11 @@
   </div>
   <ion-content has-header="true" has-subheader="true">
     <ion-list>
-      <ion-item ng-repeat="player in config.playersList" type="item-text-wrap">
+      <ion-item type="item-text-wrap" class="rankItem">
+        <h3>Name</h3>
+        <h3 class="rank">Rank</h3>
+      </ion-item>
+      <ion-item ng-repeat="player in config.playersList" type="item-text-wrap" class="rankItem normalItem">
         <h3>{{player.name}}</h3>
         <div class="rank">
           <input type="number" min="0" max="10" ng-model="player.rank" placeholder="Rank" required />

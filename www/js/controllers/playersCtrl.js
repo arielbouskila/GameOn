@@ -1,5 +1,4 @@
 app.controller("playersController", ['$scope', '$localstorage', '$ionicListDelegate', '$location', 'sharedPropertiesService', function ($scope, $localstorage, $ionicListDelegate, $location, sharedPropertiesService) {
-  $scope.players = $localstorage.getObject("players") ? $localstorage.getObject("players") : [];
   $scope.isNewPlayerActive = false;
   $scope.isEditPlayerActive = false;
   $scope.selectedPlayers = [];
@@ -15,13 +14,14 @@ app.controller("playersController", ['$scope', '$localstorage', '$ionicListDeleg
     $ionicListDelegate.closeOptionButtons();
   };
 
-  $scope.selectPlayer = function () {
+  $scope.selectPlayer = function (savePlayers) {
     $scope.selectedPlayers = [];
     for (var i = 0; i < $scope.players.length; i++) {
       if ($scope.players[i].selected) {
         $scope.selectedPlayers.push($scope.players[i]);
       }
     }
+    savePlayers && saveList();
   };
 
   $scope.nextToRankPage = function () {
@@ -40,10 +40,9 @@ app.controller("playersController", ['$scope', '$localstorage', '$ionicListDeleg
   $scope.addPlayer = function () {
     var id = $scope.players.length;
     $scope.players.push({
-      id: id,
       name: $scope.model.newPlayer,
       selected: false,
-      rank: ""
+      rank: 1
     });
     $scope.model.newPlayer = "";
     $scope.isNewPlayerActive = false;
@@ -63,10 +62,17 @@ app.controller("playersController", ['$scope', '$localstorage', '$ionicListDeleg
   };
 
   function saveList() {
-    $localstorage.setObject("players", $scope.players);
+    var playersToSave = [];
+    for (var i = 0; i < $scope.players.length; i++) {
+      playersToSave.push({
+        name: $scope.players[i].name,
+        selected: $scope.players[i].selected,
+        rank: 1
+      });
+    }
+    $localstorage.setObject("players", playersToSave);
   }
 
-  $scope.selectPlayer();
   $scope.players = ($localstorage.getObject("players") && $localstorage.getObject("players").length) ? $localstorage.getObject("players") : [];
-
+  $scope.selectPlayer();
 }]);

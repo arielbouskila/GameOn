@@ -70,6 +70,33 @@ input[type=number]::-webkit-outer-spin-button {
   line-height: 32px !important;
 }
 
+.ion-arrow-left-a::before {
+  margin: 0 !important;
+}
+
+.rankItem {
+
+}
+
+.rankItem h3 {
+  float: left;
+  width: 85%;
+}
+
+.rankItem .rank {
+  float: left;
+  width: 15%;
+}
+
+.normalItem h3 {
+  margin-top: 6px;
+}
+
+.rankItem .rank input {
+  border: 1px solid #eeeeee;
+  text-align: center;
+}
+
 .list.team{
   margin-top: 44px;
 }

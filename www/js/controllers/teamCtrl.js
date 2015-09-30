@@ -1,10 +1,10 @@
-app.controller("teamController",['$scope','$localstorage','$location','sharedPropertiesService',function($scope,$localstorage,$location,sharedPropertiesService){
+app.controller("teamController", ['$scope', '$localstorage', '$location', 'sharedPropertiesService', function ($scope, $localstorage, $location, sharedPropertiesService) {
   $scope.config = sharedPropertiesService.getProperty();
   $scope.model = {};
 
 
-  $scope.shuffle = function(){
-    if($scope.model.numberOfPlayersInTeam === "" || !($scope.model.numberOfPlayersInTeam % 1 === 0)){
+  $scope.shuffle = function () {
+    if ($scope.model.numberOfPlayersInTeam === "" || !($scope.model.numberOfPlayersInTeam % 1 === 0)) {
       alert("Please enter number of players");
       return;
     }
@@ -15,7 +15,7 @@ app.controller("teamController",['$scope','$localstorage','$location','sharedPro
     };
 
     function shufflePlayers(array) {
-      var currentIndex = array.length, temporaryValue, randomIndex ;
+      var currentIndex = array.length, temporaryValue, randomIndex;
       while (0 !== currentIndex) {
         randomIndex = Math.floor(Math.random() * currentIndex);
         currentIndex -= 1;
@@ -45,7 +45,7 @@ app.controller("teamController",['$scope','$localstorage','$location','sharedPro
 
     function shuffle() {
       //sort the list by rank
-      $scope.config.playersList.sort(function(a, b) {
+      $scope.config.playersList.sort(function (a, b) {
         return parseInt(a.rank) - parseInt(b.rank);
       });
       var numberOfTeams = Math.ceil(config.numberOfPlayers / config.numberOfPlayersInTeam);
@@ -53,7 +53,7 @@ app.controller("teamController",['$scope','$localstorage','$location','sharedPro
       var numberOfRoundsInRound = [];
       for (var i = 0; i < numberOfTeams; i++) {
         config.teams[i] = {
-          teamNumber: i+1,
+          teamNumber: i + 1,
           teamPlayers: []
         }
       }
@@ -81,7 +81,7 @@ app.controller("teamController",['$scope','$localstorage','$location','sharedPro
 
     var teams = shuffle();
 
-    if(teams.length){
+    if (teams.length) {
       sharedPropertiesService.setTeam(teams);
       $location.path("/results")
     }

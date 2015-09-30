@@ -11,7 +11,7 @@
     <ion-list>
       <ion-item ng-repeat="player in players | orderBy : 'name' | filter:{name :search}" type="item-text-wrap">
         <label class="checkbox" ng-show="!player.isPlayerEdited">
-          <input type="checkbox" ng-change="selectPlayer()" ng-checked="player.selected" ng-model="player.selected">
+          <input type="checkbox" ng-change="selectPlayer(true)" ng-checked="player.selected" ng-model="player.selected">
           {{player.name}}
         </label>
         <div class="editItem" ng-show="player.isPlayerEdited">
