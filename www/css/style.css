@@ -22,6 +22,7 @@
 }
 .subHeader.team .item-input-inset{
   margin-right: 0;
+  width: 100%;
 }
 
 .has-header {

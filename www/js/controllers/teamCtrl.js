@@ -1,5 +1,8 @@
 app.controller("teamController",['$scope','$localstorage','$location','sharedPropertiesService',function($scope,$localstorage,$location,sharedPropertiesService){
   $scope.config = sharedPropertiesService.getProperty();
+  $scope.model = {};
+
+
   $scope.shuffle = function(){
     if($scope.model.numberOfPlayersInTeam === "" || !($scope.model.numberOfPlayersInTeam % 1 === 0)){
       alert("Please enter number of players");
@@ -7,7 +10,7 @@ app.controller("teamController",['$scope','$localstorage','$location','sharedPro
     }
     var config = {
       numberOfPlayers: $scope.config.playersList.length,
-      numberOfPlayersInTeam: $scope.config.numberOfPlayersInTeam,
+      numberOfPlayersInTeam: $scope.model.numberOfPlayersInTeam,
       teams: []
     };
 
@@ -54,6 +57,7 @@ app.controller("teamController",['$scope','$localstorage','$location','sharedPro
           teamPlayers: []
         }
       }
+
       for (var j = 1; j <= parseInt($scope.config.playersList[$scope.config.playersList.length - 1].rank); j++) {
         var playersInSameRank = getPlayersInSameRank(j);
         for (var k = 0; k < playersInSameRank.length; k++) {

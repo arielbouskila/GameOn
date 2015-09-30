@@ -33,7 +33,6 @@ app.controller("playersController", ['$scope', '$localstorage', '$ionicListDeleg
       }
     }
     config.playersList = tempSelected;
-    config.numberOfPlayersInTeam = $scope.model.numberOfPlayersInTeam;
     sharedPropertiesService.setProperty(config);
     $location.path('/team');
   };
