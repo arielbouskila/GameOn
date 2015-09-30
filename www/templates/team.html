@@ -1,4 +1,7 @@
 <ion-view view-title="Team">
+  <ion-header-bar class="bar-light bar-subheader">
+    <button class="button button-royal" ng-click="shuffle()">Shuffle</button>
+  </ion-header-bar>
   <ion-content has-header="true" has-subheader="true">
     <ion-list>
       <ion-item ng-repeat="player in config.playersList" type="item-text-wrap">
@@ -8,8 +11,6 @@
         </div>
       </ion-item>
     </ion-list>
-
-    <button class="button button-royal" ng-click="shuffle()">Shuffle</button>
   </ion-content>
 
 </ion-view>

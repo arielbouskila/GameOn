@@ -1,13 +1,23 @@
 <ion-view view-title="Players">
   <ion-header-bar class="bar-light bar-subheader">
-
-  <button class="button button-positive" ng-click="addPlayerClicked()" ng-show="!isNewPlayerActive">Add</button>
-  <button class="button button-royal" ng-click="save()">Save</button>
-  <button class="button button-balanced" ng-click="select()" ng-show="players.length">Select</button>
+    <div class="general">
+      <button class="button button-positive" ng-click="addPlayerClicked()" ng-show="!isNewPlayerActive"><i class="icon ion-plus-round"></i></button>
+      <button class="button button-royal" ng-click="save()">SAVE</button>
+      <button class="button button-balanced" ng-click="select()" ng-show="players.length">SELECT</button>
+      <label class="item item-input">
+        <i class="icon ion-search placeholder-icon"></i>
+        <input type="text" placeholder="Search" ng-model="search">
+      </label>
+      <div class="item item-input-inset">
+        <label class="item-input-wrapper">
+          <input type="number" ng-model="model.numberOfPlayersInTeam" placeholder="Number of people in a team" class="numberofpeople" required/>
+        </label>
+      </div>
+    </div>
   </ion-header-bar>
   <ion-content has-header="true" has-subheader="true">
     <ion-list>
-      <ion-item ng-repeat="player in players" type="item-text-wrap">
+      <ion-item ng-repeat="player in players | orderBy : 'name' | filter:{name :search} " type="item-text-wrap">
         <ion-checkbox ng-checked="player.selected" ng-model="player.selected" ng-show="!player.isPlayerEdited">
           {{player.name}} <input type="text" ng-model="player.rank"/>
         </ion-checkbox>
@@ -30,11 +40,7 @@
           Add
         </button>
       </div>
-      <div class="item item-input-inset">
-        <label class="item-input-wrapper">
-          <input type="number" ng-model="model.numberOfPlayersInTeam" placeholder="Number of people in a team" />
-        </label>
-      </div>
+
 
     </ion-list>
   </ion-content>

@@ -1,6 +1,7 @@
 app.controller("teamController",['$scope','$localstorage','$location','sharedPropertiesService',function($scope,$localstorage,$location,sharedPropertiesService){
   $scope.config = sharedPropertiesService.getProperty();
   $scope.shuffle = function(){
+
     var config = {
       numberOfPlayers: $scope.config.playersList.length,
       numberOfPlayersInTeam: $scope.config.numberOfPlayersInTeam,

@@ -31,7 +31,14 @@ app.controller("playersController", ['$scope', '$localstorage', '$ionicListDeleg
   $scope.save = function(){
     $localstorage.setObject("players",$scope.players);
   };
+
+
+
   $scope.select = function(){
+    if($scope.model.numberOfPlayersInTeam === "" || !($scope.model.numberOfPlayersInTeam % 1 === 0)){
+      alert("Please enter number of players");
+      return;
+    }
     var config = {};
     var tempSelected = [];
     for(var i=0;i<$scope.players.length;i++){

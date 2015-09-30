@@ -6,6 +6,14 @@
 .actions button {
   margin-left: 20px;
 }
+
+.general .button-balanced {
+  float: right;
+}
+
 .list.team{
   margin-top: 44px;
+}
+.numberofpeople{
+  width: 100%;
 }
