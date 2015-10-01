@@ -1,6 +1,6 @@
 /* Empty. Add your own CSS if you like */
-.buttons{
-  float:right;
+.buttons {
+  float: right;
 }
 
 .actions button {
@@ -17,16 +17,18 @@
   top: 45px;
 
 }
-.subHeader.team{
+
+.subHeader.team {
   padding: 0;
 }
-.subHeader.team .item-input-inset{
+
+.subHeader.team .item-input-inset {
   margin-right: 0;
   width: 100%;
 }
 
 .has-header {
-  top: 90px;
+  top: 89px;
 }
 
 .general .button-balanced {
@@ -38,6 +40,7 @@
   display: inline-block;
   line-height: 25px;
 }
+
 .checkbox input {
   float: left;
   margin-right: 15px;
@@ -57,11 +60,13 @@
   width: 100%;
   display: flex;
 }
+
 input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
+
 .item-content {
   padding: 16px !important;
 }
@@ -74,7 +79,8 @@ input[type=number]::-webkit-outer-spin-button {
   margin: 0 !important;
 }
 
-.rankItem {
+.rankItem.header {
+  background: #E6E6FA;
 
 }
 
@@ -88,6 +94,19 @@ input[type=number]::-webkit-outer-spin-button {
   width: 15%;
 }
 
+.btn-whatsapp {
+  color: #0DC143;
+}
+
+.btn-whatsapp:hover {
+  color: #0DC143;
+}
+
+.results .message {
+  line-height: 34px;
+  margin-left: 20px;
+}
+
 .normalItem h3 {
   margin-top: 6px;
 }
@@ -97,10 +116,15 @@ input[type=number]::-webkit-outer-spin-button {
   text-align: center;
 }
 
-.list.team{
+.list.team {
   margin-top: 44px;
 }
-.numberofpeople{
+
+.results .list.team {
+  margin-top: 89px;
+}
+
+.numberofpeople {
   width: 100%;
   margin: 0;
   padding-left: 5px;

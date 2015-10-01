@@ -4,7 +4,7 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 window.app = angular.module('app', ['ionic', 'ionic.utils'])
-  .run(function ($ionicPlatform, $ionicHistory) {
+  .run(function ($ionicPlatform, $ionicPopup) {
     $ionicPlatform.ready(function () {
       // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
       // for form inputs)
@@ -17,11 +17,15 @@ window.app = angular.module('app', ['ionic', 'ionic.utils'])
     });
     $ionicPlatform.registerBackButtonAction(function () {
       if (location.hash === '#/') {
-        if (prompt("are you sure?")) {
-          navigator.app.exitApp();
-        }
+        var confirmPopup = $ionicPopup.confirm({
+          title: 'Really???',
+          template: 'Are you really want to exit???'
+        });
+        confirmPopup.then(function(res) {
+          !!res && navigator.app.exitApp();
+        });
       } else {
-        $ionicHistory.goBack();
+        window.history.go(-1);
       }
     }, 100);
   });

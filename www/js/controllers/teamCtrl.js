@@ -1,11 +1,16 @@
-app.controller("teamController", ['$scope', '$localstorage', '$location', 'sharedPropertiesService', function ($scope, $localstorage, $location, sharedPropertiesService) {
+app.controller("teamController", ['$scope', '$localstorage', '$location', '$ionicPopup', 'sharedPropertiesService', function ($scope, $localstorage, $location, $ionicPopup, sharedPropertiesService) {
   $scope.config = sharedPropertiesService.getProperty();
   $scope.model = {};
 
 
   $scope.shuffle = function () {
     if ($scope.model.numberOfPlayersInTeam === "" || !($scope.model.numberOfPlayersInTeam % 1 === 0)) {
-      alert("Please enter number of players");
+      var alertPopup = $ionicPopup.alert({
+        title: 'Please enter number of players'
+      });
+      alertPopup.then(function(res) {
+        $('.numberOfPeople').focus();
+      });
       return;
     }
     var config = {

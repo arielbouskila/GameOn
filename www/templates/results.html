@@ -1,11 +1,15 @@
-<ion-view view-title="Results">
+<ion-view view-title="Results" class="results">
+  <div class="bar bar-header subHeader">
+    <button class="button icon ion-social-whatsapp btn-whatsapp" ng-click="share()"></button>
+    <span class="message">The teams will not be sent with rank</span>
+  </div>
   <div class="list team">
     <div class="item item-divider" ng-repeat-start="team in teams">
       Team {{team.teamNumber}}
     </div>
-    <a class="item" href="#" ng-repeat="player in team.teamPlayers">
-      {{player.name}}
-    </a>
+    <span class="item" ng-repeat="player in team.teamPlayers">
+      {{player.name}} - {{player.rank}}
+    </span>
     <div ng-repeat-end></div>
   </div>
 </ion-view>

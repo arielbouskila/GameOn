@@ -1,4 +1,4 @@
-app.controller("playersController", ['$scope', '$localstorage', '$ionicListDelegate', '$location', 'sharedPropertiesService', function ($scope, $localstorage, $ionicListDelegate, $location, sharedPropertiesService) {
+app.controller("playersController", ['$scope', '$localstorage', '$ionicListDelegate', '$location', '$ionicPopup', 'sharedPropertiesService', function ($scope, $localstorage, $ionicListDelegate, $location, $ionicPopup, sharedPropertiesService) {
   $scope.isNewPlayerActive = false;
   $scope.isEditPlayerActive = false;
   $scope.selectedPlayers = [];
@@ -38,6 +38,20 @@ app.controller("playersController", ['$scope', '$localstorage', '$ionicListDeleg
   };
 
   $scope.addPlayer = function () {
+    if (!$scope.model.newPlayer.trim()) {
+      var alertPopup = $ionicPopup.alert({
+        title: 'Name is required'
+      });
+      alertPopup.then(function(res) {});
+      return;
+    }
+    if (playerContains($scope.model.newPlayer)) {
+      var alertPopup = $ionicPopup.alert({
+        title: $scope.model.newPlayer + ' already exists'
+      });
+      alertPopup.then(function(res) {});
+      return;
+    }
     var id = $scope.players.length;
     $scope.players.push({
       name: $scope.model.newPlayer,
@@ -49,6 +63,17 @@ app.controller("playersController", ['$scope', '$localstorage', '$ionicListDeleg
     saveList();
   };
 
+  var playerContains = function(player) {
+    var exists = false;
+    for (var i = 0; i < $scope.players.length; i++) {
+      if (player.toLowerCase().trim() === $scope.players[i].name.toLowerCase().trim()) {
+        exists = true;
+        break;
+      }
+    }
+    return exists;
+  };
+
   $scope.editPlayerSave = function (player) {
     player.isPlayerEdited = false;
     $scope.isEditPlayerActive = false;
@@ -56,9 +81,17 @@ app.controller("playersController", ['$scope', '$localstorage', '$ionicListDeleg
   };
 
   $scope.deletePlayer = function (player) {
-    var index = $scope.players.indexOf(player);
-    $scope.players.splice(index, 1);
-    saveList();
+    var confirmPopup = $ionicPopup.confirm({
+      title: 'Delete Player',
+      template: 'Are you sure?'
+    });
+    confirmPopup.then(function(res) {
+      if (res) {
+        var index = $scope.players.indexOf(player);
+        $scope.players.splice(index, 1);
+        saveList();
+      }
+    });
   };
 
   function saveList() {
