@@ -17,7 +17,9 @@ window.app = angular.module('app', ['ionic', 'ionic.utils'])
     });
     $ionicPlatform.registerBackButtonAction(function () {
       if (location.hash === '#/') {
-        navigator.app.exitApp();
+        if (prompt("are you sure?")) {
+          navigator.app.exitApp();
+        }
       } else {
         $ionicHistory.goBack();
       }
