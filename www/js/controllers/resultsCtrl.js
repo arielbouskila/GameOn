@@ -18,6 +18,6 @@ app.controller("resultController", ['$scope', '$localstorage','$location','share
       strResult += teamPlayers.join("\n");
       strResult += "\n\n";
     }
-    window.plugins.socialsharing.shareViaWhatsApp('GameOn - ', null /* img */, strResult, null, function(errormsg){alert("Error: Cannot Share")});
+    window.plugins.socialsharing.shareViaWhatsApp('GameOn - http://www.realstatuses.com/app/gameon.apk', null /* img */, strResult, null, function(errormsg){alert("Error: Cannot Share")});
   };
 }]);
